@@ -1,11 +1,11 @@
 {
-  "name": "event-3800106",
-  "description": "eHanlin 國中3800",
+  "name": "event-jhsep106",
+  "description": "eHanlin 國中自修良師",
   "author": "Aso <aso@ehanlin.com.tw>",
   "version": "0.0.1-SNAPSHOT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eHanlin/event-3800106.git"
+    "url": "https://github.com/eHanlin/event-jhsep106.git"
   },
   "devDependencies": {
     "browserify": "14.4.0",
