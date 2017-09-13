@@ -8,18 +8,14 @@ var Q = require("q");
 var util = require("gulp-template-util");
 
 function buildStyle() {
-  console.log(
-    "==================================================================================> func buildStyle() sucessful"
-  );
-  return es.map(function(file, cb) {
+  return es.map(function (file, cb) {
     less.render(
-      file.contents.toString(),
-      {
+      file.contents.toString(), {
         paths: [],
         filename: file.path,
         compress: false
       },
-      function(error, result) {
+      function (error, result) {
         if (error != null) {
           console.log(error);
           throw error;
@@ -32,10 +28,7 @@ function buildStyle() {
 }
 
 function libTask(dest) {
-  console.log(
-    "==================================================================================> func libTask() sucessful"
-  );
-  return function() {
+  return function () {
     var packageJson = JSON.parse(
       fs.readFileSync("package.json", "utf8").toString()
     );
@@ -47,20 +40,18 @@ function libTask(dest) {
       webLibModules.push("node_modules/" + module + "/**/*");
     }
     return gulp
-      .src(webLibModules, { base: "node_modules/" })
+      .src(webLibModules, {
+        base: "node_modules/"
+      })
       .pipe(gulp.dest(dest));
   };
 }
 
 function copyStaticTask(dest) {
-  console.log(
-    "==================================================================================> func copyStaticTask() sucessful"
-  );
-  return function() {
+  return function () {
     return gulp
       .src(
-        ["src/**/*.html", "src/img/**/*", "src/css/**/*.css", "src/lib/**/*"],
-        {
+        ["src/**/*.html", "src/img/**/*", "src/css/**/*.css", "src/lib/**/*"], {
           base: "src"
         }
       )
@@ -69,20 +60,17 @@ function copyStaticTask(dest) {
 }
 
 function cleanTask() {
-  console.log(
-    "==================================================================================> func cleanTask sucessful"
-  );
   return del(["dist", ""]);
 }
 
 gulp.task("lib", libTask("src/lib"));
 gulp.task("build", ["style", "lib"]);
 
-gulp.task("package", function() {
+gulp.task("package", function () {
   var deferred = Q.defer();
-  Q.fcall(function() {
+  Q.fcall(function () {
     return util.logPromise(cleanTask);
-  }).then(function() {
+  }).then(function () {
     return Q.all([
       util.logStream(libTask("dist/lib")),
       util.logStream(copyStaticTask("dist")),
