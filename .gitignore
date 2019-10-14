@@ -7,3 +7,4 @@ config.gypi
 ._*
 CVS
 tutor.json
+tutor-test.json
