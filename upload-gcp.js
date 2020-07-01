@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const bucketName = `tutor-events`
 const projectId = `tutor-204108`
-const projectName = `jhsep106`
+const projectName = `jhsep109`
 const gcpKeyFile = `./tutor.json`
 
 const storage = new Storage({

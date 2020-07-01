@@ -13,7 +13,7 @@ const projectId = "tutor-204108";
 const projectIdTest = "tutor-test-238709";
 const keyFileName = "tutor.json";
 const keyFileNameTest = "tutor-test.json";
-const projectName = "event/jhsep106/";
+const projectName = "event/jhsep109/";
 
 let uploadGCSProd = bucketName => {
     return gulp
@@ -86,7 +86,6 @@ let minifyImage = sourceImage => {
         .pipe(gulp.dest("./dist"));
 };
 
-gulp.task("build", ["style", "lib"]);
 gulp.task("package", () => {
     let deferred = Q.defer();
     Q.fcall(() => {
